@@ -3,7 +3,6 @@
         <tr>
             <th>Owner</th>
             <th>Title</th>
-            <th>Description</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -12,7 +11,6 @@
             <tr>
                 <td>{{ $task->user->name }}</td>
                 <td>{{ $task->title }}</td>
-                <td>{{ $task->description }}</td>
                 <td>
                     @can('view', $task)
                         <a href="{{ route('tasks.show', $task->id) }}" class="btn btn-info btn-sm">View</a>
@@ -27,4 +25,11 @@
             </tr>
         @endforeach
     </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">
+                {{ $tasks->links() }}
+            </td>
+        </tr>
+    </tfoot>
 </table>
