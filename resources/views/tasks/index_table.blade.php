@@ -14,9 +14,15 @@
                 <td>{{ $task->title }}</td>
                 <td>{{ $task->description }}</td>
                 <td>
-                    <a href="{{ route('tasks.show', $task->id) }}" class="btn btn-info btn-sm">View</a>
-                    <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                    @include('tasks.delete_form', ['task' => $task])
+                    @can('view', $task)
+                        <a href="{{ route('tasks.show', $task->id) }}" class="btn btn-info btn-sm">View</a>
+                    @endcan
+                    @can('update', $task)
+                        <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    @endcan
+                    @can('delete', $task)
+                        @include('tasks.delete_form', ['task' => $task])
+                    @endcan
                 </td>
             </tr>
         @endforeach

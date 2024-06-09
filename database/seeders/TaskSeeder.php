@@ -14,10 +14,11 @@ class TaskSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = User::first();
-
-        Task::factory(10)->create([
-            'user_id' => $user->id,
-        ]);
+        // loop through random 10 users and create number tasks for each user up to 5
+        User::inRandomOrder()->limit(10)->get()->each(function (User $user) {
+            Task::factory(random_int(1, 5))->create([
+                'user_id' => $user->id,
+            ]);
+        });
     }
 }

@@ -18,6 +18,8 @@ class TaskController extends Controller
 
     public function index()
     {
+        // $this->authorize('viewAny', Task::class);
+
         $tasks = $this->taskRepository->getAll();
 
         return view('tasks.index', compact('tasks'));
@@ -39,16 +41,22 @@ class TaskController extends Controller
 
     public function show(Task $task)
     {
+        $this->authorize('view', $task);
+
         return view('tasks.show', compact('task'));
     }
 
     public function edit(Task $task)
     {
+        $this->authorize('update', $task);
+
         return view('tasks.edit', compact('task'));
     }
 
     public function update(UpdateTaskRequest $request, Task $task)
     {
+        $this->authorize('update', $task);
+
         $this->taskRepository->update($task, $request->validated());
 
         session()->flash('success', __('messages.task_updated'));
@@ -58,6 +66,8 @@ class TaskController extends Controller
 
     public function destroy(Task $task)
     {
+        $this->authorize('delete', $task);
+
         $this->taskRepository->delete($task);
         
         session()->flash('success', __('messages.task_deleted'));
