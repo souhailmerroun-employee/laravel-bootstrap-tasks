@@ -1,3 +1,4 @@
+@include('debug.form_action', ['routeName' => 'tasks.update'])
 <form action="{{ route('tasks.update', $task->id) }}" method="POST">
     @csrf
     @method('PUT')
@@ -10,5 +11,12 @@
         <textarea class="form-control" id="description" name="description" rows="3" required>{{ $task->description }}</textarea>
     </div>
     <button type="submit" class="btn btn-primary">Update Task</button>
+    <button type="button" class="btn btn-secondary" onclick="quickFill();">Quick Fill</button>
 </form>
-@include('debug.form_action', ['routeName' => 'tasks.update'])
+
+<script>
+    function quickFill() {
+        document.getElementById('title').value = 'Quick Fill Title';
+        document.getElementById('description').value = 'Quick Fill Description';
+    }
+</script>
