@@ -13,11 +13,15 @@ class TaskController extends Controller
 
     public function __construct(TaskRepository $taskRepository)
     {
+        $this->middleware('auth');
+
         $this->taskRepository = $taskRepository;
     }
 
     public function index()
     {
+        $this->authorize('viewAny', Task::class);
+
         $tasks = $this->taskRepository->getAll();
 
         return view('tasks.index', compact('tasks'));
