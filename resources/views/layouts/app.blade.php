@@ -17,6 +17,8 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
+    @include('debug.filename')
+
     <div id="app">
         @include('layouts.nav')
 
