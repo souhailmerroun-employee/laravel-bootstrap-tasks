@@ -1,9 +1,23 @@
 # README
 
-- look at image in docs
+## Instructions to Run
 
-- to run 
-composer install
-copy .env.example to .env
-php artisan migrate:fresh --seed
-php artisan serve
+1. Install dependencies:
+    ```bash
+    composer install
+    ```
+
+2. Copy environment file:
+    ```bash
+    cp .env.example .env
+    ```
+
+3. Run database migrations and seeders:
+    ```bash
+    php artisan migrate:fresh --seed
+    ```
+
+4. Start the server:
+    ```bash
+    php artisan serve
+    ```
