@@ -3,6 +3,7 @@
         <tr>
             <th>Owner</th>
             <th>Title</th>
+            <th>Updated At</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -11,6 +12,7 @@
             <tr>
                 <td>{{ $task->user->name }}</td>
                 <td>{{ $task->title }}</td>
+                <td>{{ $task->updated_at->diffForHumans() }}</td>
                 <td>
                     @can('view', $task)
                         <a href="{{ route('tasks.show', $task->id) }}" class="btn btn-info btn-sm">View</a>

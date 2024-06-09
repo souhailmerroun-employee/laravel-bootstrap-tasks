@@ -8,7 +8,7 @@ class TaskRepository
 {
     public function getAll()
     {
-        return Task::with('user')->paginate(10);
+        return Task::with('user')->latest()->paginate(10);
     }
 
     public function find($id)
@@ -21,6 +21,7 @@ class TaskRepository
         $task = new Task();
         $task->title = $data['title'];
         $task->description = $data['description'];
+        $task->user_id = auth()->id();
         $task->save();
         return $task;
     }
