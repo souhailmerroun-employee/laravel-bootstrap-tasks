@@ -8,7 +8,7 @@ class TaskRepository
 {
     public function getAll()
     {
-        return Task::all();
+        return Task::with('user')->get();
     }
 
     public function find($id)

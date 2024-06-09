@@ -1,6 +1,7 @@
 <table class="table table-striped">
     <thead class="thead-dark">
         <tr>
+            <th>Owner</th>
             <th>Title</th>
             <th>Description</th>
             <th>Actions</th>
@@ -9,6 +10,7 @@
     <tbody>
         @foreach ($tasks as $task)
             <tr>
+                <td>{{ $task->user->name }}</td>
                 <td>{{ $task->title }}</td>
                 <td>{{ $task->description }}</td>
                 <td>
