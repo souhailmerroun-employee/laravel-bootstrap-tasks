@@ -10,3 +10,4 @@
     </div>
     <button type="submit">Create Task</button>
 </form>
+@include('debug.form_action', ['routeName' => 'tasks.store'])

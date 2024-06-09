@@ -3,3 +3,4 @@
     @method('DELETE')
     <button type="submit">Delete</button>
 </form>
+@include('debug.form_action', ['routeName' => 'tasks.destroy'])

@@ -11,3 +11,4 @@
     </div>
     <button type="submit">Update Task</button>
 </form>
+@include('debug.form_action', ['routeName' => 'tasks.update'])
