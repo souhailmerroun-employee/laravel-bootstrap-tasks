@@ -10,15 +10,16 @@
     <tbody>
         @foreach ($tasks as $task)
             <tr>
-                <td>{{ $task->user->name }}</td>
-                <td>{{ $task->title }}</td>
+                <td>
+                    {{ $task->user->name }}
+                </td>
+                <td>
+                    <a href="{{ route('tasks.show', $task->id) }}">{{ $task->title }}</a>
+                </td>
                 <td>{{ $task->updated_at->diffForHumans() }}</td>
                 <td>
-                    @can('view', $task)
-                        <a href="{{ route('tasks.show', $task->id) }}" class="btn btn-info btn-sm">View</a>
-                    @endcan
                     @can('update', $task)
-                        <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-link text-warning">Edit</a>
                     @endcan
                     @can('delete', $task)
                         @include('tasks.delete_form', ['task' => $task])
